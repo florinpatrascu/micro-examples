@@ -1,4 +1,4 @@
-![](micro-logo.png)
+![Micro Logo](/micro-logo.png)
  
 Examples of web applications and various deployment solutions using the Micro MVC framework. Micro is still in development and it will be publicly available very soon. The entire Micro ecosystem is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
