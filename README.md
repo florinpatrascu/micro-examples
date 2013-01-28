@@ -4,8 +4,7 @@ Examples of web applications and various deployment solutions using the Micro MV
 
 To use Micro you need [Java 6 or later](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Verify you have the `java` command available in your path. You can check this by simply typing the following command:
 
-    $ java -version
-
+    java -version
 
 Developers and non-developers can use Micro for web development. You **don't have to learn Java** for building a web application with Micro.
     
