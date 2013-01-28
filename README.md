@@ -41,3 +41,4 @@ More about Micro coming **very soon**!
  - [micro-docs](https://github.com/florinpatrascu/micro-docs) - the Micro documentation
  - [jrack](https://github.com/florinpatrascu/jrack) - another port of Rack to Java
 
+Follow us on Twitter: [@micro_mvc](http://twitter.com/micro_mvc)
