@@ -1,0 +1,4 @@
+class: ca.simplegames.micro.extensions.STExtension
+engine:
+  name: st
+  class: ca.simplegames.micro.viewers.st.STViewRenderer
