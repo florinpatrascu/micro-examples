@@ -12,15 +12,16 @@ In this repo:
  
  - `lib` - a folder containing the latest Micro binaries, frequently updated.
  - `hello_world` - a minimalistic Micro web application
- - ...
+ - `aj_demo` - a very small Micro web application demonstrating the integration with the [ActiveJDBC](https://code.google.com/p/activejdbc/) framework for ORM. ActiveJDBC is a Java implementation of the Active Record design pattern. It was inspired by ActiveRecord ORM from Ruby on Rails.<p></p>
+ - *more to come*
  
 and an arbitrary number of folders containing examples of Micro web applications. Each example will have a `run.sh` (or `run.bat`) command line that will start Micro in server mode and a `README.md` file describing the example.
 
 Using the examples.
 
-    git clone https://github.com/florinpatrascu/micro-examples.git
-    cd micro-examples/hello_world
-    ./run.sh
+    $ git clone https://github.com/florinpatrascu/micro-examples.git
+    $ cd micro-examples/hello_world
+    $ micro start
 
 You will see the console log displaying something like this:  
 
@@ -32,7 +33,7 @@ You will see the console log displaying something like this:
     
 and you can point your browser to: `http://localhost:8080` or `http://0.0.0.0:8080`
 
-More about Micro coming **very soon**!
+Follow us on Twitter: [@micro_mvc](http://twitter.com/micro_mvc), for Micro related news.
 
 **Other links:**
 
@@ -40,4 +41,4 @@ More about Micro coming **very soon**!
  - [micro-docs](https://github.com/florinpatrascu/micro-docs) - the Micro documentation
  - [jrack](https://github.com/florinpatrascu/jrack) - another port of Rack to Java
 
-Follow us on Twitter: [@micro_mvc](http://twitter.com/micro_mvc)
+
