@@ -1,6 +1,6 @@
 ![Micro Logo](https://raw.github.com/florinpatrascu/micro-examples/master/micro-logo.png)
  
-Examples of web applications and various deployment solutions using the Micro MVC framework. Micro is still in development and it will be publicly available very soon. The entire Micro ecosystem is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+Examples of web applications and various deployment solutions using the Micro MVC framework. The entire Micro ecosystem is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 To use Micro you need [Java 6 or later](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Verify you have the `java` command available in your path. You can check this by simply typing the following command:
 
