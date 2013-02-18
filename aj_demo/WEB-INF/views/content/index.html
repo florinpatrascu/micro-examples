@@ -1,0 +1,13 @@
+<h1 id="welcome">Most recent articles</h1>
+
+#if($articles && !$articles.isEmpty())
+  <pre>
+    #foreach($article in $articles)    
+    id: $article.id, title: $article.title, author: $article.author
+    #end
+  </pre>
+  Delete all? <a href="${request.ContextPath}/delete_all.html">yes</a>.
+#else
+   <h3>No articles found.</h3>
+   Click <a href="${request.ContextPath}/new.html">this link</a> to create some.
+#end

@@ -1,0 +1,10 @@
+import models.Article;
+
+articles = Article.findAll();
+if(articles.isEmpty()){
+  Article florin = Article.createIt(new Object[]{"author", "Florin", "title", "Micro and Activejdbc"});
+  Article simona = Article.createIt(new Object[]{"author", "Florin", "title", "Micro Extensions in practice"});
+  articles = Article.findAll();
+  log.info(articles.size() + " articles, created.");
+}
+context.put("articles", articles);

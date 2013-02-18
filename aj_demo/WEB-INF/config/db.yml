@@ -1,0 +1,21 @@
+production:
+  driver: org.h2.Driver
+  url: jdbc:h2:WEB-INF/articles_production
+  user: sa
+  password:
+  pool: 15
+    
+development:
+  driver: org.h2.Driver
+  url: jdbc:h2:WEB-INF/articles_development
+  user: sa
+  password:
+  pool: 5
+  
+test:
+  driver: org.h2.Driver
+  url: jdbc:h2:WEB-INF/articles_test
+  user: sa
+  password:
+  pool: 1
+  

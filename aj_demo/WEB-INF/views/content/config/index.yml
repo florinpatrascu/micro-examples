@@ -1,0 +1,9 @@
+filters:
+  - before:
+      controller: filters/Before.bsh
+  - after:
+      controller: filters/After.bsh
+
+controllers:
+  - controller:
+      name: FindArticles.bsh

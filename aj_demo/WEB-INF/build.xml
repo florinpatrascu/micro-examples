@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This script is used for fast instrumentation of the project's models-->
+<project default="instrument" basedir=".">
+
+  <property name="out.dir" value="classes"/>
+  <tstamp>
+      <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
+  </tstamp>
+
+  <path id="instrument_classpath">
+    <pathelement location="${out.dir}"/>
+    <path location="lib/activejdbc-1.4.7-SNAPSHOT.jar"/>
+    <path location="lib/activejdbc-instrumentation-1.4.7-SNAPSHOT.jar"/>
+    <path location="lib/javassist-3.17.1-GA.jar"/>
+    
+    <!-- 
+    <path location="${user.home}/.m2/repository/org/javalite/activejdbc-instrumentation/1.4.5/activejdbc-instrumentation-1.4.5.jar"/>
+    <path location="${user.home}/.m2/repository/javassist/javassist/3.8.0.GA/javassist-3.8.0.GA.jar"/>
+    <path location="${user.home}/.m2/repository/org/javalite/activejdbc/1.4.5/activejdbc-1.4.5.jar"/>
+     -->
+  </path>
+
+
+  <target name="compile" description="compile and instrument user models">
+
+    <javac srcdir="models"
+           destdir="classes"
+           debug="${compiler.debug}"
+           deprecation="${compiler.generate.no.warnings}"
+           encoding="utf8"
+           includeantruntime="false"
+           optimize="${compiler.optimize}">
+
+      <classpath refid="instrument_classpath"/>
+    </javac>
+
+  </target>
+
+  <target name="instrument" depends="compile">
+    <java classname="org.javalite.instrumentation.Main">
+      <sysproperty key="outputDirectory" value="${out.dir}"/>
+      <classpath refid="instrument_classpath"/>
+    </java>
+    
+    <!-- 
+    <jar jarfile="lib/models.jar" basedir="${out.dir}">
+         <manifest>
+             <attribute name="Built-Date" value="${TODAY}"/>
+         </manifest>
+    </jar>
+     -->
+    
+  </target>
+
+</project>
