@@ -13,7 +13,7 @@ In this repo:
  - `lib` - a folder containing the latest Micro binaries, frequently updated.
  - `hello_world` - a minimalistic Micro web application
  - `aj_demo` - a very small Micro web application demonstrating the integration with the [ActiveJDBC](https://code.google.com/p/activejdbc/) framework for ORM. ActiveJDBC is a Java implementation of the Active Record design pattern. It was inspired by ActiveRecord ORM from Ruby on Rails.
- - `micro-aj` - a Hotel booking demo app used for benchmarking the Micro framework. It is loosely modelled after the Wicket application used by Peter Thomas in his article: [Seam / JSF vs Wicket](http://ptrthomas.wordpress.com/2009/01/14/seam-jsf-vs-wicket-performance-comparison/)<p></p>. The app repo contains details about the stress sessions and some simple stats. 
+ - `micro-aj` - a Hotel booking demo app used for benchmarking the Micro framework. It is loosely modelled after the Wicket application used by Peter Thomas in his article: [Seam / JSF vs Wicket](http://ptrthomas.wordpress.com/2009/01/14/seam-jsf-vs-wicket-performance-comparison/). The app repo contains details about the stress sessions and some simple stats.<p></p>
  - *more to come*
  
 and an arbitrary number of folders containing examples of Micro web applications. Each example will have a `run.sh` (or `run.bat`) command line that will start Micro in server mode and a `README.md` file describing the example.
