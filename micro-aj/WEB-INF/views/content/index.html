@@ -1,0 +1,52 @@
+#if($hotels)
+  <h3>Hotels available</h3>
+  <table id="hotelsTable" class="table table-striped">
+     <thead>
+         <tr>
+             <th>Name</th>
+             <th>Address</th>
+             <th>City, State</th>
+             <th>Zip</th>
+             <th>&nbsp;</th>
+         </tr>
+     </thead>
+     <tbody>
+       #foreach($hotel in $hotels)
+       <tr id="hotels">
+           <td data-hotel-id="${hotel.id}"><a href="${request.ContextPath}/hotel.html?id=${hotel.id}">$hotel.name</a></td>
+           <td id="address">$hotel.address</td>
+           <td><span id="city">$hotel.city</span>, <span id="state">$hotel.state</span>, <span id="country">$hotel.country</span></td>
+           <td id="zip">$hotel.zip</td>
+           <td>
+              <a id="view" href="${request.ContextPath}/hotel.html?id=${hotel.id}">
+                <span class="label label-info">info</span>
+              </a>
+            </td>
+       </tr>
+       #end
+     </tbody>
+  </table>
+
+  #if($totalPages)
+  <div id="pagination" class="span8">
+    <div class="pagination pagination-centered">
+      <ul>
+        #foreach($p in [1..$totalPages])
+          #set($disabled = "")
+          #if($p == $currentPage)
+            #set($disabled = "disabled")
+          #end
+          <li class="${disabled}">
+            <a href="${request.ContextPath}?search_string=$!{searchString}&page=$!{p}">$!{p}</a>
+            </li>
+        #end
+      </ul>
+    </div>
+  </div>  
+  #end
+
+#else
+<h3>
+  Try to search for some hotels.
+</h3>
+#end

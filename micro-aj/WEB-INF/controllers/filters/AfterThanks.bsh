@@ -1,0 +1,10 @@
+/**
+ * simple aspect used for clearing out the session objects after the booking was finalized
+ *
+ * @author <a href="mailto:florin.patrascu@gmail.com">Florin T.PATRASCU</a>
+ */
+ 
+session = context.Request.Session;
+if(session.getAttribute("bookingOrder") != null){
+  session.removeAttribute("bookingOrder");
+}

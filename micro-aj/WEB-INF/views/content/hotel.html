@@ -1,0 +1,30 @@
+$partials.get("hotel_info.html")
+#if($reservations && !$reservations.isEmpty())
+    <div class="span3 pull-right">
+        <span class="label label-info">Your reservation</span><br>
+    </div>
+    <table  class="table table-striped">
+        <thead>
+        <tr>
+            <th>Check in</th>
+            <th>Check out</th>
+            <th>Bed</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($reservation in $reservations)
+            <tr id="hotels">
+                <td id="in">$reservation.checkout_date</td>
+                <td id="out">$reservation.checkout_date</td>
+                <td id="beds">$reservation.beds [$reservation.smoking]</td>
+                <td>
+                    <a id="view" href="${request.ContextPath}/cancel.html?id=${reservation.id}">
+                        cancel
+                    </a>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+#end

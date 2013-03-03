@@ -1,0 +1,48 @@
+#if($booking)
+
+ #if($errors)
+ <div class="alert alert-block">
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     <h4>Warning!</h4>
+     #foreach($error in $errors)
+         ${error}<br>
+     #end
+ </div>
+
+ #end
+<h3>Confirm Hotel Booking</h3>
+<div class="span6">
+  <pre>
+Hotel name: ${hotel.name}
+   address: ${hotel.address}
+            ${hotel.City}, ${hotel.State} ${hotel.zip}
+            ${hotel.country}
+
+   Checkin: ${checkinDate}
+  Checkout: ${checkoutDate} ;${days} day(s)
+Order date: ${orderDate.toString("yyyy-MM-dd")}
+          --------------------
+        Total: ${total} USD
+  </pre>
+  <form method="post" action="#">
+    ## lol
+    <input type="hidden" name="eh" value="Ido">
+    <input type="hidden" name="checkinDate" value="${checkinDate}">
+    <input type="hidden" name="checkoutDate" value="${checkoutDate}">
+    <input type="hidden" name="beds" value="${booking.beds}">
+    <input type="hidden" name="smoking" value="${booking.smoking}">
+    <input type="hidden" name="creditCard" value="${booking.credit_card}">
+    <input type="hidden" name="creditCardName" value="${booking.credit_card_name}">
+    <input type="hidden" name="creditCardExpiryMonth" value="${booking.credit_card_expiry_month}">
+    <input type="hidden" name="creditCardExpiryYear" value="${booking.credit_card_expiry_year}">
+    <input type="hidden" name="id" value="${hotel.id}">
+    #if($errors)
+        <a href="${request.ContextPath}/book.html?id=${hotel.id}"<button class="btn btn-primary">Go back</button></a>
+    #else
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    #end
+  </form>
+</div>
+#else
+    <h3>Sorry, your ordering session expired.</h3>
+#end

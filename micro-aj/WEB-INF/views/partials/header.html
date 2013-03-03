@@ -1,0 +1,25 @@
+#set($user = $request.Session.getAttribute("user"))
+
+<div class="row">
+  <div class="span8">
+    <a class="brand" href="/" title="Micro">
+      <img src="/images/hotels-logo.png" alt="Hotels booking demo app" />
+    </a>
+  </div>
+  <div class="span4 right">
+    <p><br>
+      #if($user)
+        Hello, <strong>${user.name}</strong>!
+      #else
+        Welcome, please <a href="${request.ContextPath}/register.html">Sign in</a> or
+          <a href="${request.ContextPath}/login.html">Log in</a>
+      #end
+    </p>
+    <a href="/">Home</a> |
+    #if($user)
+       <a href="/logout">Logout</a> |
+    #end
+    <a href="/about.md">About</a>
+  </div>
+  
+</div>

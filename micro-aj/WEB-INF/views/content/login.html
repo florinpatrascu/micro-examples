@@ -1,0 +1,50 @@
+<div class="section">
+    <h1>Log in</h1>
+</div>
+
+#if($error)
+  <div class="alert alert-block">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>Warning!</h4>
+    ${error}
+  </div>
+#end
+
+<div class="well">
+    <form id="form" class="form form-horizontal" method="POST" action="${request.ContextPath}/login.html">
+    #set($hotelId = $request.getParameter("id"))
+    #if($hotelId)
+        <input type="hidden" name="id" value="$!{hotelId}">
+    #end
+    <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="username">Username:</label>
+          <div class="controls">
+            <input type="text" id="username" name="username" placeholder="username" 
+                  class="input-medium" required="required"
+                  pattern="[A-Za-z0-9]*" data-error="Please enter a correct login.">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="password">Password:</label>
+          <div class="controls">
+            <input type="password" name="password" id="password" placeholder="" required="required"
+            pattern="[A-Za-z0-9]*" data-error="Please enter a correct password.">
+          </div>          
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+        </div>
+    </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('form').form();
+  });
+</script>

@@ -1,0 +1,11 @@
+filters:
+  - before:
+      controller: controllers.filters.Before
+  - after:
+      controller: controllers.filters.After
+
+controllers:
+  - controller:
+      name: controllers.HotelInfo
+  - controller:
+      name: controllers.BookingController

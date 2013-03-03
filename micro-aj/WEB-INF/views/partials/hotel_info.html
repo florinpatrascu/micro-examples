@@ -1,0 +1,22 @@
+#if($hotel)
+<div id="hotel_info">
+  <address>
+    <h3>$hotel.name</h3>
+    $hotel.address<br>
+    $hotel.city, $hotel.state $hotel.zip<br>
+    $hotel.country<br>
+    <abbr title="Nightly rate">Nightly rate:</abbr> $hotel.price    
+  </address>
+
+  #if(!$booking)
+      <form id="form" method="POST" action="${request.ContextPath}/book.html">
+          <fieldset class="buttonBox">
+              <input type="hidden" name="id" value="$hotel.id"/>
+              <input type="submit" class="btn btn-primary" value="Book Hotel"/>
+          </fieldset>
+      </form>
+  #end
+</div>
+#else
+Hotel not found, sorry!
+#end

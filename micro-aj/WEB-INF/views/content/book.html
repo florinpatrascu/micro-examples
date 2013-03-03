@@ -1,0 +1,124 @@
+<h1>Book Hotel</h1>
+
+#set($serror = $request.Session.getAttribute("error"))
+#if($serror)
+  ##${serror}
+#end
+
+#if($user)
+<div class="row">
+    <div class="span3">
+        #set($booking = true)
+        $partials.get("hotel_info.html")
+    </div>
+
+    <div class="span5">
+        <form id="form" class="form form-horizontal" method="POST" action="${request.ContextPath}/confirm.html">
+            <input type="hidden" name="id" value="${hotel.id}">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label" for="checkinDate">Check In Date:</label>
+
+                    <div class="controls">
+                        <div class="input-append date" id="checkinDate"
+                             data-date="${yyyyMMdd}" data-date-format="yyyy-mm-dd">
+                            <input class="span2" name="checkinDate" size="16" type="text" value="${yyyyMMdd}" readonly>
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="checkoutDate">Check Out Date:</label>
+
+                    <div class="controls">
+                        <div class="input-append date" id="checkoutDate"
+                             data-date="${yyyyMMdd}" data-date-format="yyyy-mm-dd">
+                            <input class="span2" name="checkoutDate" size="16" type="text" value="${yyyyMMdd}" readonly>
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="beds">Room: </label>
+
+                    <div class="controls">
+                        <select id="beds" name="beds" class="">
+                            #foreach($bedType in ["One king-sized bed", "Two double beds", "Three beds"])
+                                <option value="${velocityCount}">$bedType</option>
+                            #end
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="smokingPrefs">Smoking prefs:</label>
+
+                    <div id="smokingPrefsDiv" class="offset2">
+                        <label class="radio">
+                            <input type="radio" name="smoking" value="2" id="smokingPrefs" checked> Non Smoking
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="smoking" value="1"> Smoking
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="creditCard">Credit Card #:</label>
+                    <div class="controls">
+                        <input type="text" id="creditCard" name="creditCard" placeholder="credit card number"
+                               required="required" pattern="[0-9]{13,19}|([0-9- ]{3,8}){3,6}" data-error="Please enter a credit card number">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="creditCardName">Credit Card Name:</label>
+
+                    <div class="controls" style="white-space:nowrap;">
+                        <input type="text" id="creditCardName" name="creditCardName" placeholder="name on the card"
+                               required="required" pattern="[A-Za-z0-9 ]*" data-error="Please enter a correct name.">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="cce">Credit Card Expiry:</label>
+
+                    <div class="controls">
+                        <select id="cce" name="creditCardExpiryMonth" class="input-mini">
+                            #foreach($month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+                                <option value="${velocityCount}">$month</option>
+                            #end
+                        </select>
+                        <select name="creditCardExpiryYear" class="input-medium">
+                            #set($future=$year+2)
+                            #foreach($y in [$year..$future])
+                                <option value="${y}">${y}</option>
+                            #end
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Proceed</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('form').form();
+        jQuery('#checkinDate, #checkoutDate').datepicker();
+    });
+</script>
+
+#else
+Please <a href="${request.ContextPath}/login.html?id=$!{hotel.id}">login</a> first before booking a Hotel.
+#end
+

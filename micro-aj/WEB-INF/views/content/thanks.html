@@ -1,0 +1,20 @@
+<div class="span7">
+  <h3>Thank you!</h3>
+  #set($bookingOrder = $request.Session.getAttribute("bookingOrder"))
+  #set($bedTypes     = ["", "One king-sized bed", "Two double beds", "Three beds"])
+#if($bookingOrder)
+  <div class="well" data-order-id="${bookingOrder.id}">
+    ## ${bookingOrder}
+<pre>
+We received your order. Your reservation:
+
+   Hotel: ${bookingOrder.hotel.name}
+ Checkin: ${bookingOrder.checkin_date}
+Checkout: ${bookingOrder.checkout_date}
+    beds: $bedTypes[${bookingOrder.beds}]
+ smoking:#if(${bookingOrder.smoking}) YES #else NO #end
+</pre>
+      and you can <a href="${request.ContextPath}/hotel.html?id=${bookingOrder.hotel.id}">cancel</a> it any time.
+  </div>
+#end
+</div>

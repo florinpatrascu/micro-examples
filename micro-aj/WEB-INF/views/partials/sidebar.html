@@ -1,0 +1,12 @@
+## style="white-space: nowrap;"
+<form method="GET" action="${request.ContextPath}/index.html" id="search_hotels">
+  <fieldset>
+    <legend>Find Hotels</legend>
+    <div class="input-append">
+      <input class="span3" id="appendedInputButton" type="text" 
+        name="search_string"  placeholder="ex: hotel" value="$!{searchString}">
+      <button id="search" class="btn" type="submit">Search</button>
+    </div>
+    <span class="help-block">Search for hotel names, cities, ZIP codes or addresses. <small><span class="muted">No boolean operators .. yet</span></small>
+  </fieldset>
+</form>

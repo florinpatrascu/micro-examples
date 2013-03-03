@@ -1,0 +1,9 @@
+/**
+ * delete the user object from the current session and redirect to
+ * the main page; a basic Logout.
+ *
+ * - florin, 2013.02.19
+ */
+request = context.getRequest();
+request.Session.setAttribute("user", null);
+context.setRedirect(request.ContextPath+"/", false);

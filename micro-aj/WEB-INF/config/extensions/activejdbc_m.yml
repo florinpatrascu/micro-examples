@@ -1,0 +1,7 @@
+class: ca.simplegames.micro.extensions.ActivejdbcExtension
+options:
+  models: models
+  debug: true
+  db: db.yml
+
+   

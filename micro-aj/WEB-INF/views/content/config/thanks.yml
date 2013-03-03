@@ -1,0 +1,3 @@
+filters:
+  - after:
+      controller: filters/AfterThanks.bsh

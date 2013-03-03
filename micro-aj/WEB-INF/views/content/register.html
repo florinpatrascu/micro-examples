@@ -1,0 +1,68 @@
+#if(!$user)
+  <h1>Sign in</h1>
+  #if($error)
+    <div class="alert alert-block">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Warning!</h4>
+      ${error}
+    </div>
+  #end
+
+  <div class="well">
+      <form id="form" class="form form-horizontal" method="POST" action="#">
+      <input type="hidden" name="registration" value="true">
+      <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="username">Username:</label>
+            <div class="controls">
+              <input type="text" id="username" name="username" placeholder="username" 
+                    class="input-medium" required="required"
+                    pattern="[A-Za-z0-9]*" data-error="Please enter a correct login.">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="name">Real name:</label>
+            <div class="controls">
+              <input type="text" id="name" name="name" placeholder="name" required="required"
+              pattern="[A-Za-z0-9 ]*" data-error="Please enter a correct name.">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="password">Password:</label>
+            <div class="controls">
+              <input type="password" name="password" id="password" placeholder="" required="required"
+              pattern="[A-Za-z0-9]*" data-error="Please enter a correct password.">
+            </div>          
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="verify">Verify Password:</label>
+            <div class="controls">
+              <input type="password" id="verify" name="verify" placeholder="" required="required"
+              pattern="[A-Za-z0-9]*" data-error="">
+            </div>          
+          </div>
+
+          <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </div>
+          </div>
+      </fieldset>
+      </form>
+  </div>
+#else
+  <div class="alert alert-block">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>Warning!</h4>
+    You are logged in already, please <a href="${request.ContextPath}/logout">logout</a> if you want to log in as a different user.
+  </div>
+#end
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('form').form();
+  });
+</script>
