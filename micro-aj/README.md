@@ -28,7 +28,7 @@ Apart the application itself the following extras are included:
   - a jetty.xml file that you can use to customize your µ applications i.e. logging, min/max threads, stderr output, SSL and more. Please make sure you're using the latest Micro distribution!
   
 ### Benchmarks results
-The following results were obtained on an iMac 2.8GHz Intel Core I5, 8GB mem. The JVM runtime configuration is using the same setup I have for my free Heroku instance hosting the Micro [documentation web site](micro-docs.simplegames.ca). Attached for brevity:
+The following results were obtained on an iMac 2.8GHz Intel Core I5, 8GB mem. The JVM runtime configuration is using the same setup I have for my free Heroku instance hosting the Micro [documentation web site](http://micro-docs.simplegames.ca). Attached for brevity:
 
     -Xmx128m -Xss512k -XX:+UseCompressedOops
 
