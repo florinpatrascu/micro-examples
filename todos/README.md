@@ -29,7 +29,7 @@ To build the application, go to the application's own folder and run:
     $ cd WEB-INF
     $ ant
 
-Please to the steps above every time you're updating the models or the controllers code. Having clean binaries, will be important for the test units provided with this demo.
+Please run the steps above every time you're updating the models or the controllers code. Having clean binaries, will be important for the test units provided with this demo.
 
 ### Testing
 Another reason for writing this demo, was to improve Micro' own support for unit testing. You can see a good set of test units in the `WEB-INF/test` folder. To run the unit tests simply go to `WEB-INF/test` and run: `ant`. While perfectly usable for testing the web applications built with Micro, the future versions of Micro will improve a lot the support for unit testing, stay tuned!
