@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <title>µTodos</title>
+    <meta name="author" content="Florin T.PATRASCU, 2013">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" charset="utf-8" media="screen">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script>
+      ##//jQuery.noConflict();
+      $(document).ready(function() {
+        $('form').submit(function(){
+          $(this).attr('action', '/' + $("#checklist-name").val());
+        });
+      });
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+      <div class="span8" style="text-align: center">
+        <h1>µTodos</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="span8" style="text-align: center">        
+        <form class="form-search" action="#" method="POST">
+          <span class="muted">$!{request.ServerName}/</span>
+          <div class="input-append">
+            <input type="text" id="checklist-name" class="span2 search-query" placehoder="checklist name" required="required"
+              pattern="[A-Za-z0-9 ]*" name="checklistName" data-error="Please enter a correct checklist name.">
+            <button type="submit" class="btn">✓</button>
+          </div>
+        </form>
+
+        <div class="row" style="text-align: center">
+          <div class="span6 offset1 muted">
+            To create a new checklist, just enter its name in the field above. 
+            Then, after joining, you can share the URL to invite more people.
+            #set($demo_link="http://$!{request.ServerName}:${request.ServerPort}/milk")
+            Here's a live example: <a href="$demo_link">$demo_link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="span9">
+            $partials.get("footer.html")
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    ##<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+</html>

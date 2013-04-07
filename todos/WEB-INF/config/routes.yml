@@ -1,0 +1,25 @@
+# validate the YAMl structure with: http://yaml-online-parser.appspot.com/
+- route: "/{image_file}.{type: png|jpg|jpeg|txt}"
+  method: get, head
+  controller:
+    name: ca.simplegames.micro.controllers.BinaryContent
+    options: {
+      mime_types: { .txt: "text/plain;charset=UTF-8" }
+    }
+
+
+# this is because I am not sure optional parameters are working with Wink. Examples:
+# route: "/{checklistName}/todos/{id}?"
+- route: "/{checklistName: [a-zA-Z]+}/todos{sep: (\\W){0,1}}{id: (\\d*)}"
+  controller:
+    # name: ChecklistController.bsh
+    name: controllers.TodosController
+
+- route: "/{checklistName: [a-zA-Z]+}"
+  controller:
+    name: controllers.TodosController
+
+- route: /system/info
+  # method: get
+  controller:
+    name: ca.simplegames.micro.controllers.StatsController

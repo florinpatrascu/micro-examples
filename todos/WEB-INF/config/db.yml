@@ -1,0 +1,20 @@
+production:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://prod_server:3306/todos_production
+  user: sa
+  password:
+  pool: 15
+
+development:
+  driver: org.h2.Driver
+  url: jdbc:h2:WEB-INF/todos_development
+  user: sa
+  password:
+  pool: 5
+
+test:
+  driver: org.h2.Driver
+  url: jdbc:h2:../todos_test
+  user: sa
+  password:
+  pool: 5

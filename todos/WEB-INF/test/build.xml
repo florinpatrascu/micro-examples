@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ ~ Experimental support for testing a Micro web app
+ ~ (work in progress)
+ ~
+ ~ Florin, 2013-03-30
+ -->
+
+<project default="test" basedir=".">
+    <property environment="env"/>
+    <property name="micro.dir" value="${env.MICRO_HOME}"/>
+    <property name="test.dir" value="."/>
+    <property name="build.dir" value="./build"/>
+    <property name="src.dir" value="./src"/>
+    <property name="lib.dir" value="./lib"/>
+
+    <tstamp>
+        <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
+    </tstamp>
+
+    <!-- Compiler options -->
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.optimize" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.encoding" value="utf-8"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.source" value="1.6"/>
+    <property name="compiler.target" value="1.6"/>
+
+    <!--
+     ~ classpath used at compile and test time
+    -->
+    <path id="test.classpath">
+        <fileset dir="${micro.dir}">
+            <include name="lib/*.jar"/>
+            <include name="dist/*.jar"/>
+        </fileset>
+        <fileset dir="../config/extensions">
+            <include name="**/lib/*.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <path id="classes" location="${build.dir}"/>
+        <path id="models_etc" location="../classes"/>
+    </path>
+
+    <!--
+     ~ Run the tests
+     -->
+    <target name="test" depends="compile">
+        <junit printsummary="yes" fork="yes" haltonfailure="yes"
+               showoutput="true" dir="${test.dir}">
+            <jvmarg value="-DMICRO_ENV=test"/>
+            <jvmarg value="-Dfile.encoding=UTF-8"/>
+            <jvmarg value="-Dnet.sf.ehcache.skipUpdateCheck=true"/>
+            <formatter type="plain"/>
+            <!--<formatter type="xml"/>-->
+
+            <classpath>
+                <path refid="test.classpath"/>
+            </classpath>
+
+            <batchtest fork="yes" todir="${build.dir}">
+                <fileset dir="${src.dir}">
+                    <include name="*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <!--
+     ~  Compile the test classes.
+     -->
+    <target name="compile">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+
+        <javac srcdir="${src.dir}"
+               destdir="${build.dir}"
+               debug="${compiler.debug}"
+               deprecation="${compiler.generate.no.warnings}"
+               encoding="utf8"
+               includeantruntime="false"
+               optimize="${compiler.optimize}">
+
+            <classpath refid="test.classpath"/>
+            <exclude name="${test.dir}/files/**"/>
+        </javac>
+    </target>
+
+</project>
