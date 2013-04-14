@@ -1,0 +1,74 @@
+#if($error)
+
+    <div class="alert alert-block alert-error fade in">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>${error}</strong>
+    </div>
+
+#else
+    <div id="short-url" class="span9">
+        <h2>
+            #if($shortUrl)
+                #if($request.ServerPort != 80)
+                    #set($port = ":${request.ServerPort}")
+                #end
+                #set($link="http://$!{request.ServerName}$!{port}/${shortUrl}")
+            <a href="$link">$link</a>
+            #elseif($url)
+            <a href="$!{url}">$!{url}</a>
+            #end
+        </h2>
+    </div>
+
+    #if($hitStats)
+        #set($months=["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+    <div class="span9">
+        Stats for: <strong>$url</strong><br>
+        Created at: <strong>$originalUrlCreatedAt.toString("yyyy-MMM-d HH:MM")</strong>
+    </div>
+    <div id="short-url" class="span9">
+        <div id="placeholder" style="width: 600px; height: 250px; position: relative; padding-left: 3.91em;" class="pull-right jqplot-target"></div>
+        <script type="text/javascript">
+            var hits = [
+                #foreach($hitStat in $hitStats)
+                    ${hitStat.total_hitcount}
+                    #if($velocityCount<$hitStats.size()),#end
+                #end
+            ];
+
+            // Can specify a custom tick Array.
+            // Ticks should match up one for each y value (category) in the series.
+            var ticks = [
+                #foreach($hitStat in $hitStats)
+                    '$months.get(${hitStat.month})'
+                    #if($velocityCount<$hitStats.size()),#end
+                #end
+            ];
+
+            var plot1 = $.jqplot('placeholder', [hits], {
+                seriesDefaults:{
+                    renderer:$.jqplot.BarRenderer,
+                    rendererOptions: {fillToZero: true}
+                },
+                series:[
+                    {label:'Hits'}
+                ],
+                legend: {
+                    show: true,
+                    placement: 'placeholder'
+                },
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        ticks: ticks
+                    },
+                    yaxis: {
+                        pad: 1.05,
+                        tickOptions: {formatString: '%d'}
+                    }
+                }
+            });
+        </script>
+    </div>
+    #end
+#end

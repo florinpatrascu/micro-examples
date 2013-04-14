@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <title>µURL - a simple URL shortener</title>
+    <meta name="author" content="Florin T.PATRASCU, 2013">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" charset="utf-8" media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script>
+        ##jQuery.noConflict();
+    </script>
+
+    <link rel="stylesheet" href="/js/jquery.jqplot.min.css" type="text/css" charset="utf-8" media="screen">
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/js/excanvas.min.js"></script><![endif]-->
+    <script type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="/js/jqplot.barRenderer.min.js"></script>
+    <script type="text/javascript" src="/js/jqplot.categoryAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="/js/jqplot.pointLabels.min.js"></script>
+</head>
+
+<body>
+<div class="centered">
+    <div class="row">
+        <div class="span9">
+            <h1><a href="/">µURL</a></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <form class="form-search" action="${request.ContextPath}" method="POST">
+                <div class="input-append">
+                    <input type="text" id="url" class="span6 search-query"
+                           placeholder="Paste a link here and squeeze it..."
+                           pattern="((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?"
+                           name="url"
+                           required="required" data-error="Please enter a valid URL.">
+                    <button type="submit" class="btn">squeeze it!</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+        ${content.get("index.html")}
+    </div>
+    <div class="row span9">
+        <footer>
+            <div class="row">
+                powered by <span class="micro-badge"> <a href="http://micro.simplegames.ca/">micro $!{site.MicroVersion} </a></span>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+##<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+</html>

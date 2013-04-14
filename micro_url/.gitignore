@@ -1,0 +1,17 @@
+dist/
+build/
+out/
+*.iml
+*.ipr
+*.iws
+.idea/
+.DS_Store
+.Spotlight-V100
+.Trashes
+*.tmproj
+logs/
+*.log
+*.trace.db
+*.ids
+*.class
+*_models.properties

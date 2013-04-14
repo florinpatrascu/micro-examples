@@ -1,0 +1,21 @@
+- route: "/{url: [A-Za-z0-9]+}/stats/{year: [0-9]{4}}{sep: (\\W){0,1}}{format: ([html|json|htm]*)}"
+  method: get
+  controller:
+    name: controllers.HitStatsController
+# view:
+#   repository: content
+#   path: stats.html
+
+# keep this route safe! ../catzavencu is the key that permits the delete to happen
+- route: "/{url: [A-Za-z0-9]+}/catzavencu"
+  method: delete
+
+- route: "/{url: [A-Za-z0-9]+}"
+  method: get, head
+#  controller:
+#    name: controllers.MicroUrlController
+
+- route: /system/info
+  # method: get
+  controller:
+    name: ca.simplegames.micro.controllers.StatsController

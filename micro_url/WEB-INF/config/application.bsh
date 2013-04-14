@@ -1,0 +1,27 @@
+import ca.simplegames.micro.Globals;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * This controller is executed after the Micro framework is loaded
+ */
+ 
+site.ExtensionsManager
+    .require("i18N")
+    .require("activejdbc_m");
+
+// restrict the URL shortening service to only serve a handful of domains:
+String[] domainRestrictions = new String[]{
+    "^https?://([^/@]*\\.)?simplegames\\.ca(/.*)?$",
+    "^https?://([^/@]*\\.)?flop\\.ca(/.*)?$"
+};
+
+domainRestrictionPatterns = new ArrayList();
+for(domainRestriction: domainRestrictions){
+    domainRestrictionPatterns.add(Pattern.compile(domainRestriction, Pattern.CASE_INSENSITIVE));
+}
+
+site.with("domainRestrictionPatterns", domainRestrictionPatterns);
+// or comment the line above for releasing this functionality in the wild :)
+
+log.info("micro URL shortener service is running ...");
