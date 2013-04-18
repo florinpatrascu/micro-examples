@@ -9,7 +9,9 @@ This application is part of the [micro-examples](https://github.com/florinpatras
 
     $ cd .... micro_url/WEB-INF
     $ ant
+**Prerequisite:** verify you have the most recent (µ)Micro framework available in your path. See the [Quickstart](http://micro-docs.simplegames.ca/) docs for more details.
 
+## Using the µURL shortener     
 To start the app in server mode, go to the main app folder `micro_url` and use the script provided:    
 
     $ cd .... micro_url/
