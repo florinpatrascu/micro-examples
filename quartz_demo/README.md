@@ -7,6 +7,7 @@ Demonstrating the ability to schedule jobs within micro web apps using the [Quar
  - check if Micro is installed properly; see the [docs](http://micro-docs.simplegames.ca/), for more details.
  - quickly check if Micro was built and it can be used:
     `$ micro -v`; you should see something like this: `Micro 0.1.2`
+ - copy the `quartz_scheduler` extension to `WEB-INF/config/extensions` or create a symbolic link
  - start this web application:
     `$ micro start` or
     `$ ./run.sh`
