@@ -1,0 +1,17 @@
+<h1 id="welcome">µScheduler</h1>
+
+<p>This is a small demo micro web application demonstrating the use of the Quartz based scheduler available as a Micro extension</p>
+
+<p>Enter the desired number of seconds that a test controller will wait for before running:</p>
+
+<form action="${request.ContextPath}/index.html" method="POST">
+  Seconds before running: <select name="nr-seconds-to-wait">
+    #foreach($period in [2, 5, 10, 15, 20])
+    <option value="$!{period}">$!{period}</option>
+    #end
+  </select>
+  <br>
+  <input type="submit" value="schedule">
+</form>
+
+<p>Check your console for the results of running the test action, after submitting the desired option.</p>

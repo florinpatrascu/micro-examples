@@ -12,6 +12,8 @@ In this repo:
  
  - `lib` - a folder containing the latest Micro binaries, frequently updated.
  - `hello_world` - a minimalistic Micro web application
+ - [Quartz scheduler demo](quartz_demo) - schedule jobs within micro web apps using the [Quartz scheduler extension](https://github.com/florinpatrascu/micro-extensions/tree/master/quartz_scheduler).
+ - [micro_url](micro_url/) - a really simple (µ)Micro web application that can be used for creating and publishing shorter URLs. The app is also calculating the monthly hit stats for a given URL, drawing a nice graph every time you re-use a link; functionality inspired by Google's own [url shortener](http://goo.gl/). While very simple, it is quite functional and very easy to use. It can be hosted easily and it can be used as a Intranet service or as your own public µURL shortener :) 
  - `aj_demo` - a very small Micro web application demonstrating the integration with the [ActiveJDBC](https://code.google.com/p/activejdbc/) framework for ORM. ActiveJDBC is a Java implementation of the Active Record design pattern. It was inspired by ActiveRecord ORM from Ruby on Rails.
  - `micro-aj` - a Hotel booking demo app used for benchmarking the Micro framework. It is loosely modelled after the Wicket application used by Peter Thomas in his article: [Seam / JSF vs Wicket](http://ptrthomas.wordpress.com/2009/01/14/seam-jsf-vs-wicket-performance-comparison/). The app repo contains details about the stress sessions and some simple stats.<p></p>
  - *more to come*

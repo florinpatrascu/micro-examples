@@ -1,0 +1,4 @@
+#alias: MicroScheduler
+class: ca.simplegames.micro.extensions.quartz.MicroSchedulerExtension
+options:
+  default_delay_for_simple_actions: 1 #in seconds

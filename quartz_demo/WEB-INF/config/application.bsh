@@ -1,0 +1,21 @@
+import ca.simplegames.micro.Globals;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import ca.simplegames.micro.extensions.quartz.MicroSchedulerExtension;
+
+/**
+ * This controller is executed after the Micro framework is loaded
+ */
+ 
+site.ExtensionsManager
+    .require("i18N")
+    .require("quartz_scheduler");
+
+log.info("Micro is running ...");
+//MicroScheduler = (MicroSchedulerExtension) site.get("MicroScheduler");
+//MicroScheduler.Scheduler.start();
+
+site.get("MicroScheduler").Scheduler.start();

@@ -1,0 +1,8 @@
+import org.apache.commons.lang3.StringUtils;
+
+job     = context.get("job");
+name    = StringUtils.defaultString(context.get("name"), "there");
+seconds = context.get("delay") == null? "so long :(" : context.get("delay")+" seconds!";
+log.info("Hi "+name+", a belated hello! I had to wait for: "+seconds);
+//log.info(job.toString());
+//site.get("MicroScheduler").Scheduler.deleteJob(job);

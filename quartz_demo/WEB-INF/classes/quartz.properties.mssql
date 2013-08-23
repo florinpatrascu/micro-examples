@@ -1,0 +1,44 @@
+# MS SQLServer persisted Quartz scheduler
+# 
+# customize this template file and save the changes as: quartz.properties
+# ッFlorin, 2013-08-20
+
+org.quartz.scheduler.instanceName = DBQuartzScheduler
+org.quartz.scheduler.instanceId = AUTO
+
+org.quartz.scheduler.rmi.export = false
+org.quartz.scheduler.rmi.proxy = false
+org.quartz.scheduler.wrapJobExecutionInUserTransaction = false
+org.quartz.scheduler.skipUpdateCheck=true
+
+org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool
+org.quartz.threadPool.threadCount = 10
+org.quartz.threadPool.threadPriority = 5
+org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread = true
+
+org.quartz.jobStore.misfireThreshold = 60000
+
+org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreCMT
+org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.MSSQLDelegate
+
+# run the Scheduler in clustered mode.
+# please check your servers are synchronized using some form of time-sync service (daemon) that
+# runs very regularly (the clocks must be within a second of each other).
+# See http://www.boulder.nist.gov/timefreq/service/its.htm if you are unfamiliar with how to do this.
+org.quartz.jobStore.isClustered = true
+org.quartz.jobStore.clusterCheckinInterval = 20000
+
+# uncomment the next line if you see db server native deadlocks
+# org.quartz.jobStore.lockHandler.updateLockRowSQL = UPDATE {0}LOCKS SET LOCK_NAME = LOCK_NAME WHERE LOCK_NAME = ?
+org.quartz.jobStore.tablePrefix = QRTZ_
+org.quartz.jobStore.dataSource = db
+org.quartz.jobStore.nonManagedTXDataSource = db
+
+
+# data source config
+org.quartz.dataSource.db.driver = net.sourceforge.jtds.jdbc.Driver
+org.quartz.dataSource.db.URL = jdbc:jtds:sqlserver://mssql_instance:1433/quartz_development
+org.quartz.dataSource.db.user = XXXXXXXX
+org.quartz.dataSource.db.password = ********
+org.quartz.dataSource.db.maxconnections = 5
+org.quartz.scheduler.skipUpdateCheck = true

@@ -1,0 +1,17 @@
+import ca.simplegames.micro.extensions.quartz.MicroSchedulerExtension;
+import org.apache.commons.lang3.StringUtils;
+import ca.simplegames.micro.Globals;
+import org.joda.time.DateTimeZone;
+import org.joda.time.DateTime;
+
+params = context.get(Globals.PARAMS);
+if(params.get("nr-seconds-to-wait") != null){
+  seconds = Integer.parseInt(params.get("nr-seconds-to-wait"));
+  map = new HashMap();
+  map.put("name", "Micro");
+  map.put("delay", seconds);
+  MicroScheduler = (MicroSchedulerExtension) site.get("MicroScheduler");
+  //MicroScheduler.Scheduler.enqueue("Hello.bsh", map, new DateTime().plusSeconds(5).Millis, 5, 3);
+  MicroScheduler.Scheduler.enqueue("Hello.bsh", map, new DateTime().plusSeconds(seconds).Millis);
+  log.info("test controller scheduled to run in: "+seconds+" seconds.");
+}
